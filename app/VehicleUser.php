@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class VehicleUser extends Model
 {
-    public function user()
+    public function driver()
     {
         return $this->belongsTo(User::class);
     }
