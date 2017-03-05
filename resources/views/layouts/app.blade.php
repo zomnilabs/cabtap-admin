@@ -23,7 +23,7 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="navbar-header">
 
                     <!-- Collapsed Hamburger -->
@@ -43,7 +43,14 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
+                        <li><a href="/home">Dashboard</a></li>
+                        <li><a href="/vehicles">Vehicles</a></li>
+                        <li><a href="/vehicle-maintenance">Vehicle Maintenance</a></li>
+                        <li><a href="/drivers">Drivers</a></li>
+                        <li><a href="/passengers">Passengers</a></li>
+                        <li><a href="/bookings">Bookings</a></li>
+                        <li><a href="/users">Users</a></li>
+                        <li><a href="/reports">Reports</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
