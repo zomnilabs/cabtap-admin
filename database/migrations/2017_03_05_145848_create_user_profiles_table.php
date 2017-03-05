@@ -20,7 +20,7 @@ class CreateUserProfilesTable extends Migration
             $table->string('middle_name')->nullable();
             $table->string('last_name');
             $table->enum('gender', ['male', 'female'])->default('male');
-            $table->string('profile_picture');
+            $table->string('profile_picture')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')
