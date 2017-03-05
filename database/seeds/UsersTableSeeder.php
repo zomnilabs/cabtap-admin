@@ -19,7 +19,7 @@ class UsersTableSeeder extends Seeder
             'api_token'  => str_random(60)
         ]);
 
-        $user->profle()->create([
+        $user->profile()->create([
             'first_name'    => 'admin',
             'last_name'     => 'admin',
             'gender'        => 'male',
@@ -32,7 +32,7 @@ class UsersTableSeeder extends Seeder
             'api_token'  => str_random(60)
         ]);
 
-        $user->profle()->create([
+        $user->profile()->create([
             'first_name'    => 'staff',
             'last_name'     => 'staff',
             'gender'        => 'male',
@@ -45,7 +45,7 @@ class UsersTableSeeder extends Seeder
             'api_token'  => str_random(60)
         ]);
 
-        $user->profle()->create([
+        $user->profile()->create([
             'first_name'    => 'mark',
             'last_name'     => 'lopez',
             'gender'        => 'male',
