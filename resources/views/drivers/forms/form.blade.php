@@ -21,7 +21,7 @@
                 <select name="vehicle_id" id="vehicle_id" class="form-control">
                     @foreach($vehicles as $vehicle)
                         <option value={{ $vehicle->id }}>
-                            {{ $vehicle->make }} {{ $vehicle->model }} {{ $vehicle->year }} : {{ $vehicle->plate_number }}
+                            {{ $vehicle->getVehicleAttribute() }}
                         </option>
                     @endforeach
                 </select>

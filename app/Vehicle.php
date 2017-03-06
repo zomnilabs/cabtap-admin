@@ -15,4 +15,14 @@ class Vehicle extends Model
     {
         return $this->hasMany(VehicleUser::class);
     }
+
+    public function maintenaces()
+    {
+        return $this->hasMany(VehicleMaintenance::class);
+    }
+
+    public function getVehicleAttribute()
+    {
+        return ucwords($this->attributes['make'] . ' ' . $this->attributes['model'] . ' ' . $this->attributes['year'] . ' : ' . $this->attributes['plate_number']);
+    }
 }

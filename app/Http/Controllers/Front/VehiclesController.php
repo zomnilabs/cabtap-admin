@@ -81,7 +81,7 @@ class VehiclesController extends Controller
     {
         $input = $request->all();
 
-        $vehicle = Vehicle::where('id', $id);
+        $vehicle = Vehicle::where('id', $id)->first();
 
         $vehicle->update($input);
 
