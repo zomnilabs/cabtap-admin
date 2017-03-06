@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CreateVehicleMaintenanceRequest;
 use App\Vehicle;
 use App\VehicleMaintenance;
 use Illuminate\Http\Request;
@@ -39,7 +40,7 @@ class VehicleMaintenancesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateVehicleMaintenanceRequest $request)
     {
         $input = $request->all();
 

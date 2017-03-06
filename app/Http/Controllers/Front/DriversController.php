@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CreateDriverRequest;
 use App\User;
 use App\Vehicle;
 use App\VehicleUser;
@@ -41,7 +42,7 @@ class DriversController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateDriverRequest $request)
     {
         $input = $request->all();
         $input['status'] = 'active';

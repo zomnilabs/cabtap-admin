@@ -2,7 +2,7 @@
     @include('components.errors')
 
     <div class="col-sm-12">
-        <div class="form-group">
+        <div class="form-group{{ $errors->has('user_id') ? ' has-error' : '' }}">
             <label class="control-label col-sm-2" for="user_id">Select User</label>
             <div class="col-sm-10">
                 <select name="user_id" id="user_id" class="form-control">
@@ -15,7 +15,7 @@
     </div>
 
     <div class="col-sm-12">
-        <div class="form-group">
+        <div class="form-group{{ $errors->has('vehicle_id') ? ' has-error' : '' }}">
             <label class="control-label col-sm-2" for="vehicle_id">Select Vehicle</label>
             <div class="col-sm-10">
                 <select name="vehicle_id" id="vehicle_id" class="form-control">
