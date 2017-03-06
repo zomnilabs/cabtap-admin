@@ -19,6 +19,7 @@ class CreateVehicleUsersTable extends Migration
             $table->integer('vehicle_id')->unsigned();
             $table->enum('status', ['active', 'inactive'])->default('inactive');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

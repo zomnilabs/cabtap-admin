@@ -28,7 +28,7 @@ class VehiclesController extends Controller
      */
     public function create()
     {
-        //
+        return view('vehicles.forms.create');
     }
 
     /**
@@ -39,7 +39,11 @@ class VehiclesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+
+        $vehicle = Vehicle::create($input);
+
+        return redirect('/vehicles');
     }
 
     /**
@@ -61,7 +65,9 @@ class VehiclesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $vehicle = Vehicle::where('id', $id)->first();
+
+        return view('vehicles.forms.update', compact('vehicle'));
     }
 
     /**
@@ -73,7 +79,13 @@ class VehiclesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->all();
+
+        $vehicle = Vehicle::where('id', $id);
+
+        $vehicle->update($input);
+
+        return redirect('/vehicles');
     }
 
     /**
@@ -84,6 +96,8 @@ class VehiclesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Vehicle::where('id', $id)->delete();
+
+        return redirect('/vehicles');
     }
 }

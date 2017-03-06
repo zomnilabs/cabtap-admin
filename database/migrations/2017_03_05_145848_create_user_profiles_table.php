@@ -22,6 +22,7 @@ class CreateUserProfilesTable extends Migration
             $table->enum('gender', ['male', 'female'])->default('male');
             $table->string('profile_picture')->nullable();
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('user_id')
                 ->references('id')

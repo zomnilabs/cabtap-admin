@@ -26,6 +26,7 @@ class CreateBookingsTable extends Migration
             $table->enum('status', ['pending', 'accepted', 'on-trip', 'completed'])->default('pending');
             $table->double('price');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

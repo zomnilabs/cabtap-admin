@@ -20,6 +20,7 @@ class CreateVehicleMaintenancesTable extends Migration
             $table->double('price');
             $table->date('scheduled_date');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

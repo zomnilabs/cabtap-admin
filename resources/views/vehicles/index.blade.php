@@ -5,10 +5,12 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Drivers</div>
+                    <div class="panel-heading">Vehicles</div>
 
                     <div class="panel-body">
-                        <button class="btn btn-primary">Create New Vehicle</button>
+                        <a href="/vehicles/create" class="btn btn-primary">
+                            <i class="glyphicon glyphicon-plus"></i> Create New Vehicle
+                        </a>
                         <br><br>
                         <table class="table table-bordered">
                             <thead>
@@ -35,13 +37,20 @@
                                     <td>{{ $vehicle->status }}</td>
                                     <td>{{ $vehicle->created_at->toFormattedDateString() }}</td>
                                     <td>
-                                        <button class="btn btn-primary">
+                                        <a class="btn btn-primary" href="/vehicles/{{ $vehicle->id }}/edit">
                                             <i class="glyphicon glyphicon-edit"></i>
-                                        </button>
+                                        </a>
 
-                                        <button class="btn btn-danger">
+                                        <button class="btn btn-danger"
+                                                onclick="event.preventDefault();
+                                                     document.getElementById('delete-vehicle-form-{{ $vehicle->id }}').submit();">
                                             <i class="glyphicon glyphicon-trash"></i>
                                         </button>
+
+                                        <form id="delete-vehicle-form-{{ $vehicle->id }}" action="/vehicles/{{ $vehicle->id }}" method="POST" style="display: none;">
+                                            {{ method_field('DELETE') }}
+                                            {{ csrf_field() }}
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach

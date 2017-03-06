@@ -15,7 +15,10 @@ class UsersController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::all();
+
+        return view('users.index')
+            ->with('users', $users);
     }
 
     /**
@@ -25,7 +28,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        //
+        return view('users.forms.create');
     }
 
     /**
@@ -36,7 +39,18 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+
+        $input['password'] = bcrypt('password');
+        $input['api_token']  = str_random(60);
+
+        $profile = $input['profile'];
+        unset($input['profile']);
+
+        $user = User::create($input);
+        $user->profile()->create($profile);
+
+        return redirect('/users');
     }
 
     /**
@@ -45,7 +59,7 @@ class UsersController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show($id)
     {
         //
     }
@@ -56,9 +70,12 @@ class UsersController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit($id)
     {
-        //
+        $user = User::where('id', $id)->first();
+
+
+        return view('users.forms.update', compact('user'));
     }
 
     /**
@@ -68,9 +85,18 @@ class UsersController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, $id)
     {
-        //
+        $input = $request->all();
+
+        $profile = $input['profile'];
+        unset($input['profile']);
+
+        $user = User::find($id)->update($input);
+        $user = User::where('id', $id)->first();
+        $user->profile()->update($profile);
+
+        return redirect('/users');
     }
 
     /**
@@ -79,8 +105,10 @@ class UsersController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy($id)
     {
-        //
+        User::where('id', $id)->delete();
+
+        return redirect('/users');
     }
 }

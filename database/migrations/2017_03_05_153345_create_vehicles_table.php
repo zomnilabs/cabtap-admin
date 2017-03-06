@@ -21,6 +21,7 @@ class CreateVehiclesTable extends Migration
             $table->string('plate_number');
             $table->enum('status', ['inactive', 'active'])->default('inactive');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
