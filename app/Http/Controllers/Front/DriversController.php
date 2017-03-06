@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
-use App\Vehicle;
+use App\User;
 use Illuminate\Http\Request;
 
-class VehiclesController extends Controller
+class DriversController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +15,10 @@ class VehiclesController extends Controller
      */
     public function index()
     {
-        $vehicles = Vehicle::all();
+        $drivers = User::where('user_group', 'driver')
+            ->get();
 
-        return view('vehicles.index')
-            ->with('vehicles', $vehicles);
+        return view('drivers.index');
     }
 
     /**
@@ -45,10 +45,10 @@ class VehiclesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
         //
     }
@@ -56,10 +56,10 @@ class VehiclesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
         //
     }
@@ -68,10 +68,10 @@ class VehiclesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
         //
     }
@@ -79,10 +79,10 @@ class VehiclesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
         //
     }

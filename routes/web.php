@@ -18,3 +18,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+Route::group(['namespace' => 'Front', 'middleware' => 'auth'], function() {
+    Route::resource('users', 'UsersController');
+    Route::resource('drivers', 'DriversController');
+    Route::resource('vehicles', 'VehiclesController');
+});
