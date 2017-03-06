@@ -11,6 +11,9 @@
                         <a href="/drivers/create" class="btn btn-primary">
                             <i class="glyphicon glyphicon-plus"></i> Create New Driver
                         </a>
+                        <button class="btn btn-default" onclick="frames['frame'].print()">
+                            <i class="glyphicon glyphicon-print"></i> Print
+                        </button>
                         <br><br>
                         <table class="table table-bordered">
                             <thead>
@@ -55,4 +58,5 @@
             </div>
         </div>
     </div>
+    <iframe src="/drivers/preview" name="frame" style="width: 0; height: 0"></iframe>
 @endsection

@@ -8,6 +8,10 @@
                     <div class="panel-heading">Bookings</div>
 
                     <div class="panel-body">
+                        <button class="btn btn-default" onclick="frames['frame'].print()">
+                            <i class="glyphicon glyphicon-print"></i> Print
+                        </button>
+                        <br><br>
                         <table class="table table-bordered">
                             <thead>
                             <tr>
@@ -42,4 +46,5 @@
             </div>
         </div>
     </div>
+    <iframe src="/bookings/preview" name="frame" style="width: 0; height: 0"></iframe>
 @endsection
