@@ -23,6 +23,13 @@ class DriversController extends Controller
         return view('drivers.index', compact('drivers'));
     }
 
+    public function preview()
+    {
+        $drivers = VehicleUser::all();
+
+        return view('drivers.print', compact('drivers'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

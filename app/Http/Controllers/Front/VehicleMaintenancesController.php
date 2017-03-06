@@ -22,6 +22,13 @@ class VehicleMaintenancesController extends Controller
         return view('vehicle-maintenance.index', compact('maintenances'));
     }
 
+    public function preview()
+    {
+        $maintenances = VehicleMaintenance::all();
+
+        return view('vehicle-maintenance.print', compact('maintenances'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

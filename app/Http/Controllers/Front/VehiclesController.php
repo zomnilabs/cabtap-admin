@@ -22,6 +22,13 @@ class VehiclesController extends Controller
             ->with('vehicles', $vehicles);
     }
 
+    public function preview()
+    {
+        $vehicles = Vehicle::all();
+
+        return view('vehicles.print', compact('vehicles'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

@@ -22,6 +22,13 @@ class UsersController extends Controller
             ->with('users', $users);
     }
 
+    public function preview()
+    {
+        $users = User::all();
+
+        return view('users.print', compact('users'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

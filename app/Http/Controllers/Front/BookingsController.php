@@ -20,6 +20,13 @@ class BookingsController extends Controller
         return view('bookings.index', compact('bookings'));
     }
 
+    public function preview()
+    {
+        $bookings = Booking::all();
+
+        return view('bookings.print', compact('bookings'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -49,9 +56,7 @@ class BookingsController extends Controller
      */
     public function show($id)
     {
-        $booking = Booking::where('id', $id)->first();
-
-        return view('bookings.show', compact('booking'));
+        //
     }
 
     /**

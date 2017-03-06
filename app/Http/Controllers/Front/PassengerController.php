@@ -21,6 +21,13 @@ class PassengerController extends Controller
         return view('passenger.index')->with('users', $users);
     }
 
+    public function preview()
+    {
+        $users = User::where('user_group', 'passenger')->get();
+
+        return view('passenger.print', compact('users'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
