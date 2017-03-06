@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @yield('styles')
 
     <!-- Scripts -->
     <script>
@@ -43,14 +44,16 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        <li><a href="/home">Dashboard</a></li>
-                        <li><a href="/vehicles">Vehicles</a></li>
-                        <li><a href="/vehicle-maintenance">Vehicle Maintenance</a></li>
-                        <li><a href="/drivers">Drivers</a></li>
-                        <li><a href="/passengers">Passengers</a></li>
-                        <li><a href="/bookings">Bookings</a></li>
-                        <li><a href="/users">Users</a></li>
-                        <li><a href="/reports">Reports</a></li>
+                        @if (! Auth::guest())
+                            <li><a href="/home">Dashboard</a></li>
+                            <li><a href="/vehicles">Vehicles</a></li>
+                            <li><a href="/vehicle-maintenance">Vehicle Maintenance</a></li>
+                            <li><a href="/drivers">Drivers</a></li>
+                            <li><a href="/passengers">Passengers</a></li>
+                            <li><a href="/bookings">Bookings</a></li>
+                            <li><a href="/users">Users</a></li>
+                            <li><a href="/reports">Reports</a></li>
+                        @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -90,5 +93,6 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    @yield('scripts')
 </body>
 </html>
