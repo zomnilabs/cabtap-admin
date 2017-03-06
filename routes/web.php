@@ -25,4 +25,5 @@ Route::group(['namespace' => 'Front', 'middleware' => 'auth'], function() {
     Route::resource('drivers', 'DriversController');
     Route::resource('vehicles', 'VehiclesController');
     Route::resource('vehicle-maintenance', 'VehicleMaintenancesController');
+    Route::resource('bookings', 'BookingsController');
 });

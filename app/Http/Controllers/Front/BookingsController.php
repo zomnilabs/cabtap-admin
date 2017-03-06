@@ -15,7 +15,9 @@ class BookingsController extends Controller
      */
     public function index()
     {
-        //
+        $bookings = Booking::all();
+
+        return view('bookings.index', compact('bookings'));
     }
 
     /**
@@ -45,9 +47,11 @@ class BookingsController extends Controller
      * @param  \App\Booking  $booking
      * @return \Illuminate\Http\Response
      */
-    public function show(Booking $booking)
+    public function show($id)
     {
-        //
+        $booking = Booking::where('id', $id)->first();
+
+        return view('bookings.show', compact('booking'));
     }
 
     /**
