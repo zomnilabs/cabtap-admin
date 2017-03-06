@@ -8,39 +8,43 @@
                     <div class="panel-heading">Drivers</div>
 
                     <div class="panel-body">
-                        <button class="btn btn-primary">New Driver</button>
+                        <a href="/drivers/create" class="btn btn-primary">
+                            <i class="glyphicon glyphicon-plus"></i> Create New Driver
+                        </a>
+                        <br><br>
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>Make</th>
-                                    <th>Model</th>
-                                    <th>Year</th>
-                                    <th>Plate Number</th>
-                                    <th>Status</th>
+                                    <th>Vehicle</th>
+                                    <th>Full Name</th>
                                     <th>Created Date</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
 
                             <tbody>
-                                @foreach($vehicles as $vehicle)
+                                @foreach($drivers as $driver)
                                     <tr>
-                                        <td>{{ $vehicle->id }}</td>
-                                        <td>{{ $vehicle->make }}</td>
-                                        <td>{{ $vehicle->model }}</td>
-                                        <td>{{ $vehicle->year }}</td>
-                                        <td>{{ $vehicle->plate_number }}</td>
-                                        <td>{{ $vehicle->status }}</td>
-                                        <td>{{ $vehicle->created_at->toFormattedDateString() }}</td>
+                                        <td>{{ $driver->id }}</td>
+                                        <td>{{ $driver->vehicle->make }} {{ $driver->vehicle->model }} {{ $driver->vehicle->year }} : {{ $driver->vehicle->plate_number }}</td>
+                                        <td>{{ $driver->user->profile->getFullNameAttribute() }}</td>
+                                        <td>{{ $driver->created_at->toFormattedDateString() }}</td>
                                         <td>
-                                            <button class="btn btn-primary">
+                                            <a class="btn btn-primary" href="/drivers/{{ $driver->id }}/edit">
                                                 <i class="glyphicon glyphicon-edit"></i>
-                                            </button>
+                                            </a>
 
-                                            <button class="btn btn-danger">
+                                            <button class="btn btn-danger"
+                                                    onclick="event.preventDefault();
+                                                            document.getElementById('delete-driver-form-{{ $driver->id }}').submit();">
                                                 <i class="glyphicon glyphicon-trash"></i>
                                             </button>
+
+                                            <form id="delete-driver-form-{{ $driver->id }}" action="/drivers/{{ $driver->id }}" method="POST" style="display: none;">
+                                                {{ method_field('DELETE') }}
+                                                {{ csrf_field() }}
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach

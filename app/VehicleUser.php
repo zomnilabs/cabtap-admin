@@ -9,7 +9,9 @@ class VehicleUser extends Model
 {
     use SoftDeletes;
 
-    public function driver()
+    protected $guarded = ['id'];
+
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
