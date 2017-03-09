@@ -38,6 +38,19 @@ class BookingsController extends Controller {
 
         $booking = Booking::find($bookingId);
 
+        // Update driver status
+        if ($status === 'accepted') {
+            VehicleUser::where('user_id', $user->id)
+                ->where('status', 'active')
+                ->update(['status' => 'on-trip']);
+        }
+
+        if ($status === 'cancel' || $status === 'completed') {
+            VehicleUser::where('user_id', $user->id)
+                ->where('status', 'on-trip')
+                ->update(['status' => 'active']);
+        }
+
         return response()->json($booking, 200);
     }
 }
