@@ -47,7 +47,6 @@ class BookingsController extends Controller {
 
         if ($status === 'cancel' || $status === 'completed') {
             VehicleUser::where('id', $booking->vehicle_user_id)
-                ->where('status', 'on-trip')
                 ->update(['status' => 'active']);
         }
 
