@@ -29,7 +29,7 @@ class BookingsController extends Controller {
     public function chageStatus(Request $request, $bookingId, $status)
     {
         $user = $request->user()->toArray();
-        $vehicleUser = VehicleUser::where('user_id', $user->id)
+        $vehicleUser = VehicleUser::where('user_id', $user['id'])
             ->where('status', 'active')
             ->first();
 
@@ -40,13 +40,13 @@ class BookingsController extends Controller {
 
         // Update driver status
         if ($status === 'accepted') {
-            VehicleUser::where('user_id', $user->id)
+            VehicleUser::where('id', $booking->vehicle_user_id)
                 ->where('status', 'active')
                 ->update(['status' => 'on-trip']);
         }
 
         if ($status === 'cancel' || $status === 'completed') {
-            VehicleUser::where('user_id', $user->id)
+            VehicleUser::where('id', $booking->vehicle_user_id)
                 ->where('status', 'on-trip')
                 ->update(['status' => 'active']);
         }
