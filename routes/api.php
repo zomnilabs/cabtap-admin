@@ -25,4 +25,5 @@ Route::get('/vehicles/{plateNumber}', 'API\VehiclesController@getVehicleByPlateN
 Route::group(['middleware' => 'auth:api'], function() {
     Route::get('vehicle', 'API\DriversController@getAssignedVehicle');
     Route::post('bookings', 'API\BookingsController@store');
+    Route::patch('bookings/{bookingId}/status', 'API\BookingsController@chageStatus');
 });

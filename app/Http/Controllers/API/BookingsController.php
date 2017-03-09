@@ -24,4 +24,14 @@ class BookingsController extends Controller {
 
         return response()->json($booking, 201);
     }
+
+    public function chageStatus($bookingId, $status)
+    {
+        $booking = Booking::where('id', $bookingId)
+            ->update(['status', $status]);
+
+        $booking = Booking::find($bookingId);
+
+        return response()->json($booking, 200);
+    }
 }
