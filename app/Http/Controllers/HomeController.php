@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Booking;
+use App\Vehicle;
+use App\VehicleMaintenance;
+use App\VehicleUser;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +28,27 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $activeVehicle = Vehicle::where('status', 'active')
+            ->count();
+
+        $today = Carbon::today('Asia/Manila')->toDateString();
+        $vehicleUnderMaintenance = VehicleMaintenance::whereDate('scheduled_date', '=', $today)
+            ->count();
+
+        $completedTrips = Booking::whereDate('created_at', '=', $today)
+            ->where('status', 'completed')
+            ->count();
+
+        $recentlyCompletedTrips = Booking::whereDate('created_at', '=', $today)
+            ->where('status', 'completed')
+            ->orderBy('created_at', 'desc')
+            ->take(10)
+            ->get();
+
+        return view('home')
+            ->with('active_vehicle', $activeVehicle)
+            ->with('vehicle_under_maintenance', $vehicleUnderMaintenance)
+            ->with('completed_trips', $completedTrips)
+            ->with('bookings', $recentlyCompletedTrips);
     }
 }

@@ -73,7 +73,7 @@
         <div class="col-md-4">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <h3>10</h3>
+                    <h3>{{ $active_vehicle }}</h3>
                     <h5>Active Vehicles</h5>
                 </div>
             </div>
@@ -82,7 +82,7 @@
         <div class="col-md-4">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <h3>10</h3>
+                    <h3>{{ $vehicle_under_maintenance }}</h3>
                     <h5>Vehicles Under Maintenance</h5>
                 </div>
             </div>
@@ -91,7 +91,7 @@
         <div class="col-md-4">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <h3>100</h3>
+                    <h3>{{ $completed_trips }}</h3>
                     <h5>Completed Trips</h5>
                 </div>
             </div>
@@ -110,7 +110,36 @@
         <div class="col-md-6">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <canvas id="myChart" width="400" height="200"></canvas>
+                    <h2>Recently Completed Trips</h2>
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Passenger Name</th>
+                            <th>Driver Name</th>
+                            <th>Pickup</th>
+                            <th>Destination</th>
+                            <th>Price</th>
+                            <th>Status</th>
+                            <th>Created Date</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        @foreach($bookings as $booking)
+                            <tr>
+                                <td>{{ $booking->id }}</td>
+                                <td>{{ $booking->passenger->profile->getFullNameAttribute() }}</td>
+                                <td>{{ $booking->vehicle_user_id ? $booking->driver->user->profile->getFullNameAttribute() : 'No Driver Yet' }}</td>
+                                <td>{{ $booking->pickup }}</td>
+                                <td>{{ $booking->destination }}</td>
+                                <td>{{ $booking->price }}</td>
+                                <td>{{ $booking->status }}</td>
+                                <td>{{ $booking->created_at->toFormattedDateString() }}</td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
