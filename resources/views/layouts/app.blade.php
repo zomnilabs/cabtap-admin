@@ -52,7 +52,6 @@
                             <li><a href="/passengers">Passengers</a></li>
                             <li><a href="/bookings">Bookings</a></li>
                             <li><a href="/users">Users</a></li>
-                            <li><a href="/reports">Reports</a></li>
                         @endif
                     </ul>
 
@@ -61,7 +60,6 @@
                         <!-- Authentication Links -->
                         @if (Auth::guest())
                             <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

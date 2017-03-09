@@ -55,6 +55,8 @@ class DriversController extends Controller
         $input['status'] = 'active';
 
         $driver = VehicleUser::create($input);
+        Vehicle::where('id', $input['vehicle_id'])
+            ->update(['status' => 'active']);
 
         return redirect('/drivers');
     }

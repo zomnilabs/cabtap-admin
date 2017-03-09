@@ -20,6 +20,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('/auth', 'API\AuthenticateController@login');
 Route::post('/register', 'API\PassengersController@register');
 
+Route::get('/vehicles/{plateNumber}', 'API\VehiclesController@getVehicleByPlateNumber');
+
 Route::group(['middleware' => 'auth:api'], function() {
     Route::get('vehicle', 'API\DriversController@getAssignedVehicle');
+    Route::post('bookings', 'API\BookingsController@store');
 });

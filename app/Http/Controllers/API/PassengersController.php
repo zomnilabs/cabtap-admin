@@ -16,6 +16,7 @@ class PassengersController extends Controller {
         \DB::transaction(function() use ($profile, $user, &$result) {
             $user['api_token']  = str_random(60);
             $user['fcm_token']  = str_random(60);
+            $user['password']   = bcrypt($user['password']);
 
             $user = User::create($user);
             $user->profile()->create($profile['profile']);
