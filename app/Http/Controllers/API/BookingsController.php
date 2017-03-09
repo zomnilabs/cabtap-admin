@@ -29,8 +29,10 @@ class BookingsController extends Controller {
     public function chageStatus(Request $request, $bookingId, $status)
     {
         $user = $request->user()->toArray();
+
+        $booking = Booking::find($bookingId);
         $vehicleUser = VehicleUser::where('user_id', $user['id'])
-            ->where('status', 'active')
+            ->where('id', $booking->vehicle_user_id)
             ->first();
 
         $booking = Booking::where('id', $bookingId)
