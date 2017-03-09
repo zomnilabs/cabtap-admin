@@ -31,7 +31,7 @@
                                 <tr>
                                     <td>{{ $booking->id }}</td>
                                     <td>{{ $booking->passenger->profile->getFullNameAttribute() }}</td>
-                                    <td>{{ $booking->driver->user->profile->getFullNameAttribute() }}</td>
+                                    <td>{{ $booking->vehicle_user_id ? $booking->driver->user->profile->getFullNameAttribute() : 'No Driver Yet' }}</td>
                                     <td>{{ $booking->pickup }}</td>
                                     <td>{{ $booking->destination }}</td>
                                     <td>{{ $booking->price }}</td>
