@@ -34,7 +34,7 @@ class BookingsController extends Controller {
             ->first();
 
         $booking = Booking::where('id', $bookingId)
-            ->update(['status', $status, 'vehicle_user_id' => $vehicleUser->id]);
+            ->update(['status' => $status, 'vehicle_user_id' => $vehicleUser->id]);
 
         $booking = Booking::find($bookingId);
 
