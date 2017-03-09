@@ -3,6 +3,7 @@ namespace App\Http\Controllers\API;
 
 use App\Booking;
 use App\Http\Controllers\Controller;
+use App\VehicleUser;
 use Illuminate\Http\Request;
 
 class BookingsController extends Controller {
@@ -25,10 +26,15 @@ class BookingsController extends Controller {
         return response()->json($booking, 201);
     }
 
-    public function chageStatus($bookingId, $status)
+    public function chageStatus(Request $request, $bookingId, $status)
     {
+        $user = $request->user()->toArray();
+        $vehicleUser = VehicleUser::where('user_id', $user->id)
+            ->where('status', 'active')
+            ->first();
+
         $booking = Booking::where('id', $bookingId)
-            ->update(['status', $status]);
+            ->update(['status', $status, 'vehicle_user_id' => $vehicleUser->id]);
 
         $booking = Booking::find($bookingId);
 
