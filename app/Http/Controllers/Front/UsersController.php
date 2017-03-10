@@ -61,16 +61,17 @@ class UsersController extends Controller
             $path = $file->store('documents');
 
             $profile['document_file'] = $path;
-            unset($input['file']);
         }
+
 
         if ($request->hasFile('picture')) {
             $file = $request->file('picture');
             $path = $file->store('documents');
 
             $profile['profile_picture'] = $path;
-            unset($input['picture']);
         }
+        unset($input['file']);
+        unset($input['picture']);
 
         $user = User::create($input);
         $user->profile()->create($profile);
