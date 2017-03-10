@@ -49,6 +49,7 @@ class UsersTableSeeder extends Seeder
             'first_name'    => 'mark',
             'last_name'     => 'lopez',
             'gender'        => 'male',
+            'driver_id'     => str_random(10)
         ]);
     }
 }

@@ -55,6 +55,13 @@ class UsersController extends Controller
         $profile = $input['profile'];
         unset($input['profile']);
 
+        if ($request->hasFile('profile.file')) {
+            $file = $request->file('profile.file');
+            $path = $file->store('documents');
+
+            $input['document_file'] = $path;
+        }
+
         $user = User::create($input);
         $user->profile()->create($profile);
 

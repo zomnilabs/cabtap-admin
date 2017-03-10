@@ -21,6 +21,8 @@ class CreateUserProfilesTable extends Migration
             $table->string('last_name');
             $table->enum('gender', ['male', 'female'])->default('male');
             $table->string('profile_picture')->nullable();
+            $table->string('document_file')->nullable();
+            $table->string('driver_id')->nullable();
             $table->timestamps();
             $table->softDeletes();
 

@@ -19,6 +19,7 @@
                             <thead>
                             <tr>
                                 <th>Id</th>
+                                <th>Driver Id</th>
                                 <th>Full Name</th>
                                 <th>E-Mail Address</th>
                                 <th>Gender</th>
@@ -32,6 +33,7 @@
                             @foreach($users as $user)
                                 <tr>
                                     <td>{{ $user->id }}</td>
+                                    <td>{{ $user->profile->driver_id }}</td>
                                     <td>{{ $user->profile->first_name }} {{ $user->profile->last_name }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->profile->gender }}</td>
