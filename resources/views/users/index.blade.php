@@ -23,6 +23,8 @@
                                 <th>Full Name</th>
                                 <th>E-Mail Address</th>
                                 <th>Gender</th>
+                                <th>Birthdate</th>
+                                <th>Address</th>
                                 <th>User Group</th>
                                 <th>Created Date</th>
                                 <th>Actions</th>
@@ -37,6 +39,8 @@
                                     <td>{{ $user->profile->first_name }} {{ $user->profile->last_name }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->profile->gender }}</td>
+                                    <td>{{ $user->profile->birthdate ? \Carbon\Carbon::createFromTimestamp(strtotime($user->profile->birthdate))->toFormattedDateString() : '' }}</td>
+                                    <td>{{ $user->profile->address }}</td>
                                     <td>{{ $user->user_group }}</td>
                                     <td>{{ $user->created_at->toFormattedDateString() }}</td>
                                     <td>

@@ -38,6 +38,7 @@
             </div>
         </div>
     </div>
+
     <div class="col-sm-12">
         <div class="form-group{{ $errors->has('profile.gender') ? ' has-error' : '' }}">
             <label class="control-label col-sm-2" for="profile[gender]">Gender</label>
@@ -54,6 +55,38 @@
             </div>
         </div>
     </div>
+
+    <div class="col-sm-12">
+        <div class="form-group{{ $errors->has('profile.birthdate') ? ' has-error' : '' }}">
+            <label class="control-label col-sm-2" for="profile[birthdate]">Birthday</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="date" name="profile[birthdate]"
+                       value='{{ isset( $user->profile['birthdate'] ) ? $user->profile['birthdate'] : "" }}'/>
+                @if ($errors->has('profile.birthdate'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('profile.birthdate') }}</strong>
+                    </span>
+                @endif
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-12">
+        <div class="form-group{{ $errors->has('profile.address') ? ' has-error' : '' }}">
+            <label class="control-label col-sm-2" for="profile[address]">Address</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" name="profile[address]"
+                       value='{{ isset( $user->profile['address'] ) ? $user->profile['address'] : "" }}'/>
+                @if ($errors->has('profile.address'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('profile.address') }}</strong>
+                    </span>
+                @endif
+            </div>
+        </div>
+    </div>
+
+
     <div class="col-sm-12">
         <div class="form-group">
             <label class="control-label col-sm-2" for="user_group">User Group</label>
@@ -94,6 +127,21 @@
             {{--</div>--}}
         {{--</div>--}}
     {{--</div>--}}
+
+    <div class="col-sm-12">
+        <div class="form-group{{ $errors->has('picture') ? ' has-error' : '' }}">
+            <label class="control-label col-sm-2" for="picture">Profile Picture</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="file" name="picture" placeholder="Profile Picture"
+                       value='{{ isset( $user->picture ) ? $user->picture : "" }}'/>
+                @if ($errors->has('picture'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('picture') }}</strong>
+                    </span>
+                @endif
+            </div>
+        </div>
+    </div>
 
     <div class="col-sm-12">
         <div class="form-group{{ $errors->has('file') ? ' has-error' : '' }}">

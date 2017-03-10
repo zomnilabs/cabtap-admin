@@ -20,6 +20,8 @@ class CreateUserProfilesTable extends Migration
             $table->string('middle_name')->nullable();
             $table->string('last_name');
             $table->enum('gender', ['male', 'female'])->default('male');
+            $table->date('birthdate')->nullable();
+            $table->string('address')->nullable();
             $table->string('profile_picture')->nullable();
             $table->string('document_file')->nullable();
             $table->string('driver_id')->nullable();
