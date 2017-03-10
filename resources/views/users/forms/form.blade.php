@@ -80,20 +80,20 @@
         </div>
     </div>
 
-    <div class="col-sm-12">
-        <div class="form-group{{ $errors->has('profile.driver_id') ? ' has-error' : '' }}">
-            <label class="control-label col-sm-2" for="profile.driver_id">Driver Id</label>
-            <div class="col-sm-10">
-                <input class="form-control" type="text" name="profile[driver_id]" placeholder="Driver Id"
-                       value='{{ isset( $user->profile->driver_id ) ? $user->profile->driver_id : "" }}'/>
-                @if ($errors->has('profile.driver_id'))
-                    <span class="help-block">
-                        <strong>{{ $errors->first('profile.driver_id') }}</strong>
-                    </span>
-                @endif
-            </div>
-        </div>
-    </div>
+    {{--<div class="col-sm-12">--}}
+        {{--<div class="form-group{{ $errors->has('profile.driver_id') ? ' has-error' : '' }}">--}}
+            {{--<label class="control-label col-sm-2" for="profile.driver_id">Driver Id</label>--}}
+            {{--<div class="col-sm-10">--}}
+                {{--<input class="form-control" type="text" name="profile[driver_id]" placeholder="Driver Id"--}}
+                       {{--value='{{ isset( $user->profile->driver_id ) ? $user->profile->driver_id : "" }}'/>--}}
+                {{--@if ($errors->has('profile.driver_id'))--}}
+                    {{--<span class="help-block">--}}
+                        {{--<strong>{{ $errors->first('profile.driver_id') }}</strong>--}}
+                    {{--</span>--}}
+                {{--@endif--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</div>--}}
 
     <div class="col-sm-12">
         <div class="form-group{{ $errors->has('file') ? ' has-error' : '' }}">

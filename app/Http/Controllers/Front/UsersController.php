@@ -53,13 +53,15 @@ class UsersController extends Controller
         $input['api_token']  = str_random(60);
 
         $profile = $input['profile'];
+        $profile['driver_id'] = strtoupper(uniqid());
         unset($input['profile']);
 
-        if ($request->hasFile('profile.file')) {
-            $file = $request->file('profile.file');
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
             $path = $file->store('documents');
 
-            $input['document_file'] = $path;
+            $profile['document_file'] = $path;
+            unset($input['file']);
         }
 
         $user = User::create($input);
