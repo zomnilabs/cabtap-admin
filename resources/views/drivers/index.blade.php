@@ -60,3 +60,11 @@
     </div>
     <iframe src="/drivers/preview" name="frame" style="width: 0; height: 0"></iframe>
 @endsection
+
+@section('scripts')
+    <script>
+        $(function() {
+            $('.table').DataTable();
+        });
+    </script>
+@endsection

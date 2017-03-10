@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/v/bs/dt-1.10.13/datatables.min.css"/>
     @yield('styles')
 
     <!-- Scripts -->
@@ -91,6 +92,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script type="text/javascript" src="//cdn.datatables.net/v/bs/dt-1.10.13/datatables.min.js"></script>
     @yield('scripts')
 </body>
 </html>
