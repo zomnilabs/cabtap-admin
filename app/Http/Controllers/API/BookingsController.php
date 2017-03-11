@@ -30,10 +30,13 @@ class BookingsController extends Controller {
     {
         $user = $request->user()->toArray();
 
+        \Log::info($user);
+
         $booking = Booking::find($bookingId);
         $vehicleUser = VehicleUser::where('user_id', $user['id'])
-            ->where('id', $booking->vehicle_user_id)
             ->first();
+
+
 
         $booking = Booking::where('id', $bookingId)
             ->update(['status' => $status, 'vehicle_user_id' => $vehicleUser->id]);
