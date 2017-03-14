@@ -19,7 +19,7 @@
         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
             <label class="control-label col-sm-2" for="name">Name</label>
             <div class="col-sm-10">
-                <select name="name" id="name">
+                <select name="name" id="name" class="form-control">
                     <option value="change-oil">Change Oil</option>
                     <option value="gasoline">4 Liters Gasoline Oil</option>
                 </select>

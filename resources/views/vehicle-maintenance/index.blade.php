@@ -24,6 +24,7 @@
                                 <th>Price</th>
                                 <th>Schedule Date</th>
                                 <th>Created Date</th>
+                                <th>Status</th>
                                 <th>Actions</th>
                             </tr>
                             </thead>
@@ -37,6 +38,14 @@
                                     <td>{{ $maintenance->price }}</td>
                                     <td>{{ $maintenance->scheduled_date }}</td>
                                     <td>{{ $maintenance->created_at->toFormattedDateString() }}</td>
+                                    @if (\Carbon\Carbon::createFromTimestamp(strtotime($maintenance->scheduled_date))->isToday())
+                                        <td>In Progress</td>
+                                    @elseif (\Carbon\Carbon::createFromTimestamp(strtotime($maintenance->scheduled_date))->isFuture())
+                                        <td>Pending</td>
+                                    @elseif (\Carbon\Carbon::createFromTimestamp(strtotime($maintenance->scheduled_date))->isPast())
+                                        <td>Completed</td>
+                                    @endif
+
                                     <td>
                                         <a class="btn btn-primary" href="/vehicle-maintenance/{{ $maintenance->id }}/edit">
                                             <i class="glyphicon glyphicon-edit"></i>
