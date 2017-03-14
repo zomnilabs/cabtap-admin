@@ -55,19 +55,11 @@ class DriversController extends Controller
         $input = $request->all();
         $input['status'] = 'active';
 
-        $input['time_shift_start'] = Carbon::createFromTimestamp(strtotime($input['time_shift_start']))
-            ->toTimeString();
-
-        $input['time_shift_end'] = Carbon::createFromTimestamp(strtotime($input['time_shift_end']))
-            ->toTimeString();
-
         $checkDriver = VehicleUser::where('user_id', $input['user_id'])
-            ->where('time_shift_start', '<=', $input['time_shift_start'])
-            ->where('time_shift_end', '>=', $input['time_shift_end'])
+            ->where('shift', $input['shift'])
             ->first();
 
         if ($checkDriver) {
-
             session(['error-creating' => 'The driver is already assigned into a vehicle under that shift time']);
             return redirect('/drivers');
         }

@@ -30,19 +30,13 @@
     </div>
 
     <div class="col-sm-12">
-        <div class="form-group{{ $errors->has('time_shift_start') ? ' has-error' : '' }}">
-            <label class="control-label col-sm-2" for="time_shift_start">Shift Start Time</label>
+        <div class="form-group{{ $errors->has('shift') ? ' has-error' : '' }}">
+            <label class="control-label col-sm-2" for="shift">Shift</label>
             <div class="col-sm-10">
-                <input type="time" class="form-control" id="time_shift_start" name="time_shift_start">
-            </div>
-        </div>
-    </div>
-
-    <div class="col-sm-12">
-        <div class="form-group{{ $errors->has('time_shift_end') ? ' has-error' : '' }}">
-            <label class="control-label col-sm-2" for="time_shift_end">Shift End Time</label>
-            <div class="col-sm-10">
-                <input type="time" class="form-control" id="time_shift_end" name="time_shift_end">
+                <select name="shift" id="shift" class="form-control">
+                    <option value="day">Day</option>
+                    <option value="night">Night</option>
+                </select>
             </div>
         </div>
     </div>

@@ -26,8 +26,7 @@ class CreateDriverRequest extends FormRequest
         return [
             'user_id'        => 'required',
             'vehicle_id'     => 'required',
-            'time_shift_start'  => 'required',
-            'time_shift_end'    => 'required'
+            'shift'  => 'required'
         ];
     }
 }

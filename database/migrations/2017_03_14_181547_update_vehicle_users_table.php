@@ -14,8 +14,7 @@ class UpdateVehicleUsersTable extends Migration
     public function up()
     {
         \Schema::table('vehicle_users', function(Blueprint $table) {
-            $table->time('time_shift_start');
-            $table->time('time_shift_end');
+            $table->enum('shift', ['day', 'night']);
         });
     }
 

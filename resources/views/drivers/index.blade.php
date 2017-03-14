@@ -38,7 +38,7 @@
                                         <td>{{ $driver->id }}</td>
                                         <td>{{ $driver->vehicle->make }} {{ $driver->vehicle->model }} {{ $driver->vehicle->year }} : {{ $driver->vehicle->plate_number }}</td>
                                         <td>{{ $driver->user->profile->getFullNameAttribute() }}</td>
-                                        <td>{{ \Carbon\Carbon::createFromTimestamp(strtotime($driver->time_shift_start))->format('h:i A') }} - {{ \Carbon\Carbon::createFromTimestamp(strtotime($driver->time_shift_end))->format('h:i A') }}</td>
+                                        <td>{{ ucwords($driver->shift) }}</td>
                                         <td>{{ $driver->created_at->toFormattedDateString() }}</td>
                                         <td>
                                             <a class="btn btn-primary" href="/drivers/{{ $driver->id }}/edit">
