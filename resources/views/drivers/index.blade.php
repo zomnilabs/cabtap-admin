@@ -7,6 +7,11 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Drivers</div>
 
+                    @if (session('error-creating'))
+                        <div class="alert alert-danger">{{ session('error-creating') }}</div>
+                        <?php session()->forget('error-creating') ?>
+                    @endif
+
                     <div class="panel-body">
                         <a href="/drivers/create" class="btn btn-primary">
                             <i class="glyphicon glyphicon-plus"></i> Create New Driver
@@ -21,6 +26,7 @@
                                     <th>Id</th>
                                     <th>Vehicle</th>
                                     <th>Full Name</th>
+                                    <th>Shift</th>
                                     <th>Created Date</th>
                                     <th>Actions</th>
                                 </tr>
@@ -32,6 +38,7 @@
                                         <td>{{ $driver->id }}</td>
                                         <td>{{ $driver->vehicle->make }} {{ $driver->vehicle->model }} {{ $driver->vehicle->year }} : {{ $driver->vehicle->plate_number }}</td>
                                         <td>{{ $driver->user->profile->getFullNameAttribute() }}</td>
+                                        <td>{{ \Carbon\Carbon::createFromTimestamp(strtotime($driver->time_shift_start))->format('h:i A') }} - {{ \Carbon\Carbon::createFromTimestamp(strtotime($driver->time_shift_end))->format('h:i A') }}</td>
                                         <td>{{ $driver->created_at->toFormattedDateString() }}</td>
                                         <td>
                                             <a class="btn btn-primary" href="/drivers/{{ $driver->id }}/edit">
